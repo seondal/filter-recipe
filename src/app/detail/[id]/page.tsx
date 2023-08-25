@@ -1,6 +1,6 @@
 import { basic_url } from "@/constants/url";
 
-export default async function Read(props: any) {
+export default async function Detail(props: any) {
   const response = await fetch(`${basic_url}/${props.params.id}`, {
     cache: "no-store",
   });

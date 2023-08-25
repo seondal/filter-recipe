@@ -9,7 +9,7 @@ export default async function Home() {
       {data.map((item) => (
         <li key={item.id}>
           {item.sort === "아이폰" ? "🍎" : "📷"}{" "}
-          <a href={`read/${item.id}`}>{item.title}</a>
+          <a href={`detail/${item.id}`}>{item.title}</a>
         </li>
       ))}
     </ul>

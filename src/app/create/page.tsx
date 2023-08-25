@@ -35,7 +35,7 @@ export default function Create() {
       .then((result) => {
         console.log(result);
         router.refresh();
-        router.push(`/read/${result.id}`);
+        router.push(`/detail/${result.id}`);
       });
   }
 

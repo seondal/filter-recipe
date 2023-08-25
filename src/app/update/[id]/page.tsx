@@ -45,7 +45,7 @@ export default function Update() {
       .then((result) => {
         console.log(result);
         router.refresh();
-        router.push(`/read/${result.id}`);
+        router.push(`/detail/${result.id}`);
       });
   }
 
