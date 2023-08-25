@@ -1,6 +1,6 @@
-export const defaultFilterData = {
+export const defaultFilterData: Data = {
   id: "",
-  sort: "",
+  sort: "아이폰",
   tags: "",
   title: "",
   content: "",
@@ -23,6 +23,35 @@ export const defaultFilterData = {
   명료도: "",
   "노이즈 감소": "",
   비네트: "",
-  "Created time": "",
-  이미지: "",
+  "Created time": new Date(),
+  이미지: "No",
 };
+
+export const iphoneProperty: Property = [
+  "노출",
+  "휘도",
+  "하이라이트",
+  "그림자",
+  "대비",
+  "밝기",
+  "블랙포인트",
+  "채도",
+  "색 선명도",
+  "따뜻함",
+  "색조",
+  "선명도",
+  "명료도",
+  "노이즈 감소",
+  "비네트",
+];
+
+export const instaProperty: Property = [
+  "밝기",
+  "대비",
+  "구조",
+  "온도",
+  "흐리게",
+  "하이라이트",
+  "그림자",
+  "선명하게",
+];
