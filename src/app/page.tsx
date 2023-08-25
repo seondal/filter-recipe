@@ -1,5 +1,7 @@
+import { basic_url } from "@/constants/url";
+
 export default async function Home() {
-  const response = await fetch("http://localhost:9999/data", {
+  const response = await fetch(basic_url, {
     cache: "no-store",
   });
   const data: Data[] = await response.json();

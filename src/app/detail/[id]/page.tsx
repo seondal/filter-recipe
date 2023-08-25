@@ -14,7 +14,8 @@ export default async function Detail(props: any) {
       <ul>
         {(data.sort === "인스타" ? instaProperty : iphoneProperty).map(
           (prop) => {
-            const value = (parseInt(data[prop]) > 0 ? "+" : "") + data[prop];
+            const value =
+              (parseInt(data[prop] ?? "") > 0 ? "+" : "") + data[prop];
             return value !== "" ? (
               <li>
                 {prop} : {value}
