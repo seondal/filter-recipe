@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Control } from "./components/Control";
+import { Control } from "@/components/Control";
 import Link from "next/link";
 
 export const metadata: Metadata = {
