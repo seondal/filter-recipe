@@ -2,7 +2,7 @@ export default async function Home() {
   const response = await fetch("http://localhost:9999/data", {
     cache: "no-store",
   });
-  const data: FilterData[] = await response.json();
+  const data: Data[] = await response.json();
 
   return (
     <ul>

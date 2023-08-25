@@ -2,6 +2,7 @@
 
 import { instaProperty, iphoneProperty } from "@/constants/filterData";
 import { basic_url } from "@/constants/url";
+import { fetchPost, fetchPut } from "@/utils/fetch";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -11,9 +12,15 @@ interface Editor {
 }
 
 export default function Editor({ data, setData }: Editor) {
-  const isCreate = data && setData ? false : true;
   const router = useRouter();
-  const [type, setType] = useState(data ? data.sort : "인스타");
+  const [type, setType] = useState(data ? data.sort : "아이폰");
+  const property = type === "아이폰" ? iphoneProperty : instaProperty;
+
+  function afterSubmit(result: any) {
+    console.log(result);
+    router.refresh();
+    router.push(`/detail/${result.id}`);
+  }
 
   function onSubmit(e: any) {
     e.preventDefault();
@@ -26,21 +33,16 @@ export default function Editor({ data, setData }: Editor) {
       "Created time": new Date(),
       이미지: "No",
     };
-    for (const prop of type === "아이폰" ? iphoneProperty : instaProperty) {
+    for (const prop of property) {
       requestBody[prop] = e.target[prop].value;
     }
-    const url = data ? `${basic_url}/${data.id}` : basic_url;
-    fetch(`${url}`, {
-      method: isCreate ? "POST" : "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestBody),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        router.refresh();
-        router.push(`/detail/${result.id}`);
-      });
+    data
+      ? fetchPut<Data>({ url: `${basic_url}/${data.id}`, requestBody }).then(
+          (result) => afterSubmit(result)
+        )
+      : fetchPost<Data>({ url: `${basic_url}`, requestBody }).then((result) =>
+          afterSubmit(result)
+        );
   }
 
   return (
@@ -91,7 +93,7 @@ export default function Editor({ data, setData }: Editor) {
           </label>
         </div>
         <div className="flex flex-wrap gap-10 my-5">
-          {(type === "아이폰" ? iphoneProperty : instaProperty).map((prop) => (
+          {property.map((prop) => (
             <label key={prop}>
               {prop}
               {data && setData ? (

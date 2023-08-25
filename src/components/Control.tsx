@@ -1,6 +1,7 @@
 "use client";
 
 import { basic_url } from "@/constants/url";
+import { fetchDelete } from "@/utils/fetch";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 
@@ -9,15 +10,9 @@ export function Control() {
   const router = useRouter();
 
   function deleteItem() {
-    const options = {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    };
-    fetch(`${basic_url}/${id}`, options)
-      .then((response) => response.json())
-      .then(() => {
-        router.replace("/");
-      });
+    fetchDelete({ url: `${basic_url}/${id}` }).then(() => {
+      router.replace("/");
+    });
   }
 
   return (

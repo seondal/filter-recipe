@@ -3,6 +3,7 @@
 import Editor from "@/components/Editor";
 import { defaultFilterData } from "@/constants/filterData";
 import { basic_url } from "@/constants/url";
+import { fetchGet } from "@/utils/fetch";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -12,9 +13,9 @@ export default function Update() {
   const [content, setContent] = useState<Data>(defaultFilterData);
 
   useEffect(() => {
-    fetch(`${basic_url}/${id}`)
-      .then((response) => response.json())
-      .then((result) => setContent(result));
+    fetchGet({ url: `${basic_url}/${id}` }).then((result) =>
+      setContent(result)
+    );
   }, [id]);
 
   return content !== defaultFilterData ? (

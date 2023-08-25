@@ -5,7 +5,7 @@ export default async function Detail(props: any) {
   const response = await fetch(`${basic_url}/${props.params.id}`, {
     cache: "no-store",
   });
-  const data: FilterData = await response.json();
+  const data: Data = await response.json();
 
   return (
     <>
