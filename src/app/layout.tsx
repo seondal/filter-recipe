@@ -15,12 +15,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="kor">
-      <body className="flex flex-col items-center p-10">
-        <Link href="/">
-          <h1>Filter Recipe</h1>
-        </Link>
-        {children}
-        <Control />
+      <body className="">
+        <div className="fixed top-0 inset-x-0 bg-inherit h-24 flex justify-center items-center z-10">
+          <Link href="/">
+            <h1 className="m-0">Filter Recipe</h1>
+          </Link>
+        </div>
+        <div className="flex flex-col items-center py-24 px-8 z-0">
+          {children}
+        </div>
+        <div className="fixed bottom-0 inset-x-0 bg-inherit justify-center h-24 z-10">
+          <Control />
+        </div>
       </body>
     </html>
   );

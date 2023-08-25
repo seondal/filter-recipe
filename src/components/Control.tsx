@@ -16,17 +16,18 @@ export function Control() {
   }
 
   return (
-    <nav className="gap-10">
-      <Link href="/create">
-        <button>Create</button>
-      </Link>
-      {id && (
+    <nav className="flex justify-center gap-10">
+      {id ? (
         <>
           <Link href={`/update/${id}`}>
             <button>Update</button>
           </Link>
           <button onClick={deleteItem}>Delete</button>
         </>
+      ) : (
+        <Link href="/create">
+          <button>Create</button>
+        </Link>
       )}
     </nav>
   );

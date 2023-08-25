@@ -10,20 +10,22 @@ export default async function Detail(props: any) {
   return (
     <>
       <h2>{data.title}</h2>
-      <div>{data.tags}</div>
-      <ul>
+      <div className="flex flex-wrap gap-8 justify-center">
         {(data.sort === "인스타" ? instaProperty : iphoneProperty).map(
           (prop) => {
             const value =
               (parseInt(data[prop] ?? "") > 0 ? "+" : "") + data[prop];
             return value !== "" ? (
-              <li>
-                {prop} : {value}
-              </li>
+              <div className="w-20 h-24 bg-blue-300 rounded-xl flex flex-col items-center justify-center">
+                <div className="font-bold">{prop}</div>
+                <div>{value}</div>
+              </div>
             ) : null;
           }
         )}
-      </ul>
+      </div>
+      <div>{data.tags}</div>
+      {data.content && <div>"{data.content}"</div>}
     </>
   );
 }
